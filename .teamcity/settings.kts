@@ -84,6 +84,30 @@ object Build : BuildType({
         }
     }
 
+    steps {
+        script {
+            name = "status"
+            scriptContent = """
+                git status
+                echo %teamcity.pullRequest.source.branch%
+            """.trimIndent()
+        }
+        ideaRunner {
+            pathToProject = ""
+            jdk {
+                name = "1.8"
+                path = "%env.JDK_1_8%"
+                patterns("jre/lib/*.jar", "jre/lib/ext/jfxrt.jar")
+                extAnnotationPatterns("%teamcity.tool.idea%/lib/jdkAnnotations.jar")
+            }
+            pathvars {
+                variable("MAVEN_REPOSITORY", "%system.path.macro.MAVEN.REPOSITORY%")
+            }
+            jvmArgs = "-Xmx256m"
+            runConfigurations = "All in tests"
+        }
+    }
+
     triggers {
         vcs {
         }
