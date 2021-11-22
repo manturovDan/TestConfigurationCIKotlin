@@ -35,6 +35,7 @@ project {
     vcsRoot(HttpsGithubComManturovDanTestsConfigurationCIRefsHeadsMain)
 
     buildType(Build)
+    buildType(BuildNoPreliminaryMerge)
 }
 
 object Build : BuildType({
