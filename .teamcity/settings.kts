@@ -33,7 +33,6 @@ version = "2021.2"
 project {
 
     vcsRoot(HttpsGithubComManturovDanTestsConfigurationCIRefsHeadsMain)
-    vcsRoot(HttpsGithubComManturovDanTestsConfigurationCIRefsHeadsMain2)
 
     buildType(Build)
 }
