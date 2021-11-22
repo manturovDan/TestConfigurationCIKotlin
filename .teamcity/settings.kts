@@ -60,14 +60,15 @@ object Build : BuildType({
                 echo %teamcity.pullRequest.source.branch%
             """.trimIndent()
         }
-        step {
+        premergeRunner {
             name = "premerge"
-            type = "premergeRunner"
+            //type = "premergeRunner"
 
             conditions {
                 exists("teamcity.pullRequest.target.branch")
             }
-            param("tar.br", "%teamcity.pullRequest.target.branch%")
+            //param("tar.br", "%teamcity.pullRequest.target.branch%")
+            targetBranchName = "%teamcity.pullRequest.target.branch%"
         }
         ideaRunner {
             pathToProject = ""
