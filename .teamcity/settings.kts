@@ -60,7 +60,7 @@ object Build : BuildType({
                 echo %teamcity.pullRequest.source.branch%
             """.trimIndent()
         }
-        premergeRunner {
+        PreliminaryMerge {
             name = "premerge"
             //type = "premergeRunner"
 
