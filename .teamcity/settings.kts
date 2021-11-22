@@ -104,7 +104,7 @@ object Build : BuildType({
 })
 
 object BuildNoPreliminaryMerge : BuildType({
-    name = "Build"
+    name = "BuildBuildNoPreliminaryMerge"
 
     params {
         param("system.path.macro.MAVEN.REPOSITORY", "%env.HOME%/.m2/repository")
