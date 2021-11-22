@@ -84,6 +84,38 @@ object Build : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        pullRequests {
+            vcsRootExtId = "${HttpsGithubComManturovDanTestsConfigurationCIRefsHeadsMain.id}"
+            provider = github {
+                authType = token {
+                    token = "credentialsJSON:f693d045-555b-4dbf-9341-1cfa8678a798"
+                }
+                filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
+            }
+        }
+    }
+})
+
+object BuildNoPreliminaryMerge : BuildType({
+    name = "Build"
+
+    params {
+        param("system.path.macro.MAVEN.REPOSITORY", "%env.HOME%/.m2/repository")
+        param("env.JDK_1_8", "/opt/java/openjdk")
+    }
+
+    vcs {
+        root(HttpsGithubComManturovDanTestsConfigurationCIRefsHeadsMain)
+
+        checkoutMode = CheckoutMode.ON_AGENT
+    }
+
     steps {
         script {
             name = "status"
